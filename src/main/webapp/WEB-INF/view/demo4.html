@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>餅狀圖1</title>
+    <!-- 引入 ECharts 文件 -->
+    <script src="../../resources/js/echarts.min.js"></script>
+    <script src="../../resources/js/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+
+<!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
+<div id="main" style="width: 1600px;height:600px;"></div>
+
+<script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+
+    option = {
+        color: [
+            "#FF6868","#FFCC68","#BEFF68","#68FFC2","#68CBFF","#6896FF","#8368FF","#CB68FF","#FB6888",
+            "#FF9D68","#FFF668","#69FF68","#68FBFF","#68BCFF","#6873FF","#A368FF","#FB68FF","#FF6BB5",
+        ],
+        tooltip: {
+            trigger: 'item',
+            formatter: "{a} <br/>{b}: {c} ({d}%)"
+        },
+        legend: {
+            orient: 'horizontal',
+            x: 'center',
+            y: 'bottom',
+            data:['电动车研发中心','集成所','技术平台','科研处','脑所','数字所','医工所','医药所']
+        },
+        series: [
+            {
+                name:'访问来源',
+                type:'pie',
+                radius: ['50%', '70%'],
+                avoidLabelOverlap: false,
+                label: {
+                    normal: {
+                        show: false,
+                        position: 'center'
+                    },
+                    emphasis: {
+                        show: true,
+                        textStyle: {
+                            fontSize: '30',
+                            fontWeight: 'bold'
+                        }
+                    }
+                },
+                labelLine: {
+                    normal: {
+                        show: false
+                    }
+                },
+                data:[
+                    {value:1, name:'电动车研发中心'},
+                    {value:38, name:'集成所'},
+                    {value:5, name:'技术平台'},
+                    {value:1, name:'科研处'},
+                    {value:2, name:'脑所'},
+                    {value:8, name:'数字所'},
+                    {value:42, name:'医工所'},
+                    {value:5, name:'医药所'}
+                ]
+            }
+        ]
+    };
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+
+</script>
+
+</body>
+</html>
